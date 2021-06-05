@@ -1,0 +1,155 @@
+------------------------------Archivo Productos/controlador/javascriptProductos.js---------------------------------------
+
+
+function procesarCategorias() {
+  var selectorCategoria = document.getElementById("selectorFiltrado");
+
+  if (this.readyState == 4 && this.status == 200) {
+      var stringAll = this.responseText;
+      //console.log('string'+stringAll);
+
+      var arrayliCat = stringAll.split("//",);
+      //console.log('arrayliCat  '+arrayliCat);
+      selectorCategoria.innerHTML = "<option value='0'>Todos los Productos</option>" + "\n";
+      for (let i = 0; i < arrayliCat.length - 1; i++) {
+          var arraycomponentesCat = arrayliCat[i].split("/");
+          selectorCategoria.innerHTML += "<option value=" + arraycomponentesCat[0] + ">" + arraycomponentesCat[1] + "</option>" + "\n"
+          //console.log("arrayComponents "+arraycomponentesCat[1]);
+      }
+
+  }
+}
+
+
+function loadCategorias() {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = procesarCategorias;
+  xmlhttp.open("GET", "http://localhost/php/Productos/modelo/getCategorias.php", true);
+  xmlhttp.send();
+}
+
+function loadEvents() -------------------------
+loadCategorias();
+
+document.getElementById("selectorFiltrado").addEventListener("change",(ev)=>{
+    console.log(ev.target.options.selectedIndex);
+    idCat=ev.target.options.selectedIndex;
+    pagina=1;
+    limpiarTable();
+    loadProductos();
+  });
+
+-------------------------------------------------
+//Esta es la función que llama al getProductos.php
+
+var idCat=0;
+var pagina = 1;
+function loadProductos() {
+  let selectorFiltro = document.getElementById("selectorFiltrado");
+  console.log(selectorFiltro);
+  console.log("ID CAT :"+idCat);
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = procesarProductos;
+  xmlhttp.open("GET","http://localhost/php/Productos/modelo/getProductos.php?pagina="+pagina+"&categoria="+idCat,true);
+  xmlhttp.send();
+}
+-----------------------------------------------------
+HTML ----------------------- listaProductos.php
+--------------Poner entre el div donde esta el h1 de Productos y la table------Añado un poco de código para poder orientarnos mejor
+
+<!--Page content-->
+  <div id="containerProducts" class="container border border-dark w-100 my-1">
+    <div class="text-center border-bottom border-dark my-1">
+      <h1 class="h2 mt-2">Productos</h1>
+    </div>
+    <!-- Filtrado con selector, añadiremos id categoria en el GET, autofocus en Todo y id categoria 0 sera para poder controlar query desde php -->
+    <label for="selectorFiltrado">Filtrar por categoria de producto:</label>
+    <select id="selectorFiltrado"></select>
+
+    <!--Contenedor de productos-->
+    <table id="tablaProductos" style="width: 90%;" class="container w-100 text-center my-1">
+
+--------------------------------------------------------
+----------------------------- PHP getProductos.php ----------------------------------
+
+<?php
+
+    include("../../comun/conexionBD.php");
+
+    
+    $registrosPorPag=4;
+    
+    
+    $pagina=$_GET["pagina"];
+    $categoria=$_GET["categoria"];
+    
+    $empezar_desde = ($pagina-1) * $registrosPorPag;
+    
+    if($categoria !="0") {
+        $query1="SELECT * from producto WHERE ID_Categoria='$categoria'";
+        $query2="SELECT * from producto WHERE ID_Categoria='$categoria' ORDER BY Nombre ASC LIMIT $empezar_desde,$registrosPorPag";
+    }else {
+        $query1="SELECT * from producto";
+        $query2="SELECT * from producto ORDER BY Nombre ASC LIMIT $empezar_desde,$registrosPorPag";
+    }
+    
+
+    
+    
+    $result = $mysqli->query($query1);
+    echo ($mysqli->error);
+
+    $numRegistros = mysqli_num_rows($result);
+
+    $total_paginas=ceil($numRegistros/$registrosPorPag);
+
+    $resultPagianado = $mysqli->query($query2);
+    while ($row = $resultPagianado->fetch_object()) {
+        echo ($row->ID_Producto . " / " . $row->img ." / ".$row->Nombre . " / ".$row->Precio . "//");
+    }
+    echo("#");
+    echo($total_paginas);
+
+   
+    
+    $result->free();
+    $mysqli->close();
+?>
+
+----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------- NUEVO ARCHIVO getCategorias.php ---------------------------------------------------
+					
+<?php
+    include("../../comun/conexionBD.php");
+
+    $result = $mysqli->query("SELECT * from categoria");
+    echo ($mysqli->error);
+    while ($row = $result->fetch_object()) {
+        echo ($row->ID_Categoria . "/" . $row->Categoria . "//");
+    }
+    $result->free();
+    $mysqli->close();
+?>
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
