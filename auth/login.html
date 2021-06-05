@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/allPages.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="icon" type="image/png" href="../uploads/logo-page.png">
+    <script src="../js/slideShow.js"></script>
+    <!-- CSS only -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
+    <link href="../downloads/bootstrap-5.0.1-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <title>Pitzeria Girona</title>
+</head>
+
+<body>
+    <!--Container Header and nav-->
+    <div class="container ">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark mb-sl-3">
+            <a href="../paginaHome.php"
+                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <img src="../uploads/logo-page.png" alt="" class="icoLogo">
+                <h1>Pitzeria Girona</h1>
+            </a>
+            <ul class="nav nav-pills">
+                <!--Redirect to pages-->
+                <!--<li class="nav-item"><a href="Ofertas/vista/listaOfertas.php" class="nav-link ">Ofertas</a></li>-->
+                <!--<li class="nav-item"><a href="menus.html" class="nav-link">Menus</a></li>-->
+                <!--<li class="nav-item"><a href="reservar.html" class="nav-link active">Reservar</a></li>-->
+                <li class="nav-item"><a href="../Productos/vista/listaProductos.php" class="nav-link">Productos</a></li>
+                <!--<li class="nav-item"><a href="../user/pedirAdomicilio/direccion.php" class="nav-link ">Pedir a
+                        domicilio</a></li>-->
+                <li class="nav-item"><a href="../about-us.php" class="nav-link">Quienes somos</a></li>
+                <!--<li class="nav-item"><a href="carrito.php" class="nav-link"><img src="" alt=""><i class="bi bi-cart4"></i></a>-->
+            </ul>
+        </header>
+    </div>
+
+    <div class="container border border-dark  w-100 mx-15 d-flex mt-4 py-4">
+        <!--Contenedor ofertas-->
+        <div class="container w-100 mx-1 border border-dark p-0">
+            <div class="container border-bottom border-dark">
+                <h2>Ofertas</h2>
+            </div>
+            <div id="carouselExampleSlidesOnly" class="carousel slide mx-0 mt-5" data-ride="carousel">
+                <div class="carousel-inner h-100">
+                    <!--Contenido 1-->
+                    <div class="carousel-item active p-1">
+                        <!-- media/images/ofertas/Delicheese.jpg -->
+                        <a href="../Productos/vista/listaProductos.php">
+                            <img id="imagenC" class="d-block w-100" alt="1 image">
+                        </a>
+                        <script type="text/javascript">
+                            window.addEventListener("load", changeImg);
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Flotant container for Login-->
+        <aside class="container w-100">
+            <div class="border border-dark p-3 w-75 text-start float-end">
+                <!--Title-->
+                <div>
+                    <label for="">
+                        <h2>Iniciar Sesión</h2>
+                    </label>
+                    <hr>
+                </div>
+                <!--Form login-->
+                <div class="container p-2">
+                    <form action="login.php" method="POST">
+                        <input type="email" name="email" id="jsEmail" placeholder="Email" required class="w-100">
+                        <br />
+                        <br />
+                        <input type="password" name="password" id="boxInput" placeholder="Password" required
+                            class="w-100">
+                        <br />
+                        <br />
+                        <div class="container text-center ">
+                            <!--<input type="checkbox" name="remember" id="">
+                            <label for="remember">Recuerdame</label>-->
+                            <input type="submit" value="Sign In" id="btnLogin" class="btn btn-success w-25 ms-5">
+                        </div>
+                    </form>
+                    <div class="container mt-3">
+                        <!--<a href="forgotPassword.html">¿Has olvidado tu contraseña?</a>-->
+                    </div>
+                </div>
+                <!--Redirect to Register-->
+                <div class="container my-3 text-center">
+                    <label for="">
+                        <h3>¿ Aún no estas registrado ?</h3>
+                    </label>
+                    <label for="">
+                        <a href="signUp.php" class="nav-link mt-2">Registrarme</a>
+                    </label>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!--Container foooter -->
+    <div class="container mt-1">
+        <footer class="d-flex flex-wrap justify-content-start mx-0 mt-3 w-100 h-50">
+            <!--Container tab -->
+            <div class="d-flex border-top border-start border-end w-50 mt-2 mx-0">
+                <button href="" class="nav-link  w-100 text-center btn" id="primera">Mas popular</button>
+                <button href="" class="nav-link  w-100 text-center btn" id="anterior">El ideal</button>
+                <button href="" class="nav-link  w-100 text-center btn" id="siguiente">Para cenar</button>
+            </div>
+            <!--Container images -->
+            <div class="container border border-2 w-100 h-50 d-flex mt-0 p-2" id="">
+                <a href="../Productos/vista/listaProductos.php">
+                    <img src="../uploads/Infantil.jpg" class="img imgOferta mx-5" alt="" id="img1">
+                </a>
+                <a href="../Productos/vista/listaProductos.php">
+                    <img src="../uploads/4-Quesos.jpg" class="img imgOferta mx-5" alt="" id="img2">
+                </a>
+                <a href="../Productos/vista/listaProductos.php">
+                    <img src="../uploads/Carbonara.jpg" class="img imgOferta mx-5" alt="" id="img3">
+                </a>
+            </div>
+        </footer>
+    </div>
+    <!--SweetAlert-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/index.js"></script>
+    <script type="text/javascript">
+        window.addEventListener("load", loadEvents);
+    </script>
+    <script type="text/javascript">
+        window.addEventListener("load", checkError);
+    </script>
+</body>
+
+</html>
