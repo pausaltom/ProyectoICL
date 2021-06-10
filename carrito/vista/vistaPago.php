@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="30"><!-- al poner este metadata la pagina se recarga automáticamente cada x segundos en este caso  30 segundos  -->
+  <meta http-equiv="refresh" content="15"><!-- al poner este metadata la pagina se recarga automáticamente cada x segundos en este caso  30 segundos  -->
   <link rel="stylesheet" href="../../css/allPages.css">
   <link rel="stylesheet" href="../../css/crear-producto.css">
   <link rel="icon" type="image/png" href="../../uploads/logo-page.png">
@@ -14,7 +14,7 @@
   <link href="../../downloads/bootstrap-5.0.1-dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- CSS Icons-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-  <title>Carrito de la compra</title>
+  <title>Pizzería Girona</title>
   <style>
     td {
       text-align: center;
@@ -34,12 +34,12 @@
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark mb-sl-3">
       <a href="../../paginaHome.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <img src="../../uploads/logo-page.png" alt="" class="icoLogo">
-        <h1>Pitzeria Girona</h1>
+        <h1>Pizzería Girona</h1>
       </a>
 
       <ul class="nav nav-pills">
         <!--Username-->
-        <li class="nav-item "><a href="../../user/configuracionCuenta/vista/ajustesCuenta.php" class="nav-link text-reset">
+        <li class="nav-item "><a href="../../user/configuracionCuenta/vista/editarPerfil.php" class="nav-link text-reset">
             <?php
             if (!isset($_SESSION["usuario"])) {
             } else {
@@ -92,9 +92,6 @@
 
     <?php
     }
-
-
-
     $row = $verPedido->fetch_object();
     ?>
 
@@ -105,40 +102,47 @@
           <h2>Pedido <?php echo "P0000" . $row->ID_Pedido ?></h2>
         </label>
       </div>
+      <!--Hora entrega-->
+      <div class="border border-dark mt-1 p-2">
+        <label for="Comentario">
+          <h5>Hora de entrega</h5>
+        </label>
+        <div class="border border-dark border-1 mt-1 p-3 fs-5"><?php echo $row->Hora; ?></div>
+      </div>
       <!--Estado pedido-->
       <div class="container border border-dark mt-2">
         <label>
           <h2 class="d-flex">EstadoPedido </h2>
         </label>
       </div>
-      <div class="container border-start border-end border-dark border-2 mt-2 text-center p-2 ">        
-          <?php
-          if ($row->ID_Estado == 6) {
-            echo'<div class="border border-dark p-0" style="background-color:#F12222;">';
-            echo "<h4>$row->Estado</h4>";
-            echo "</div>";
-          } else if ($row->ID_Estado == 5) {            
-            echo'<div class="border border-dark p-0" style="background-color:yellow;">';
-            echo "<h4>$row->Estado</h4>";
-            echo "</div>";
-          } else if ($row->ID_Estado == 4) {            
-            echo'<div class="border border-dark p-0" style="background-color:#85F130;">';
-            echo "<h4>$row->Estado</h4>";
-            echo "</div>";
-          } else if ($row->ID_Estado == 3) {            
-            echo'<div class="border border-dark p-0" style="background-color:#85C1E9;">';
-            echo "<h4>$row->Estado</h4>";
-            echo "</div>";
-          } else if ($row->ID_Estado == 2) {            
-            echo'<div class="border border-dark p-0" style="background-color:#D9FF6B;">';
-            echo "<h4>$row->Estado</h4>";
-            echo "</div>";
-          } else {
-            echo'<div class="border border-dark p-0" style="background-color:#F12222;">';
-            echo "<h4>$row->Estado</h4>";
-            echo "</div>";
-          }
-          ?>        
+      <div class="container border-start border-end border-dark border-2 mt-2 text-center p-2 ">
+        <?php
+        if ($row->ID_Estado == 6) {
+          echo '<div class="border border-dark p-0" style="background-color:#F12222;">';
+          echo "<h4>$row->Estado</h4>";
+          echo "</div>";
+        } else if ($row->ID_Estado == 5) {
+          echo '<div class="border border-dark p-0" style="background-color:yellow;">';
+          echo "<h4>$row->Estado</h4>";
+          echo "</div>";
+        } else if ($row->ID_Estado == 4) {
+          echo '<div class="border border-dark p-0" style="background-color:#85F130;">';
+          echo "<h4>$row->Estado</h4>";
+          echo "</div>";
+        } else if ($row->ID_Estado == 3) {
+          echo '<div class="border border-dark p-0" style="background-color:#85C1E9;">';
+          echo "<h4>$row->Estado</h4>";
+          echo "</div>";
+        } else if ($row->ID_Estado == 2) {
+          echo '<div class="border border-dark p-0" style="background-color:#D9FF6B;">';
+          echo "<h4>$row->Estado</h4>";
+          echo "</div>";
+        } else {
+          echo '<div class="border border-dark p-0" style="background-color:#E5E7E9;">';
+          echo "<h4>$row->Estado</h4>";
+          echo "</div>";
+        }
+        ?>
       </div>
       <!--Table-->
       <div class="container border-start border-end border-dark border-2 mt-2 text-center p-2">
@@ -158,7 +162,7 @@
                 <td><img src="<?php echo "/php/uploads/" . $productos->img; ?>" width="100px" height="60px" alt="Imagen Producto"></td>
                 <td><?php echo $productos->Nombre; ?></td>
                 <td><?php echo $productos->Cantidad; ?></td>
-                <td><?php echo $productos->Precio;?>€</td>
+                <td><?php echo $productos->Precio; ?>€</td>
               </tr>
             <?php
             }
@@ -168,7 +172,7 @@
               <th>Total a pagar</th>
               <td></td>
               <td></td>
-              <td><strong><?php echo$row->PrecioTotal?>€</strong></td>
+              <td><strong><?php echo $row->PrecioTotal ?>€</strong></td>
             </tr>
           </tbody>
         </table>
@@ -247,13 +251,6 @@
               <h5>Comentario</h5>
             </label>
             <div class="border border-dark border-1 mt-1 p-3"><?php echo $row->Comentario; ?></div>
-          </div>
-          <!--Hora entrega-->
-          <div class="border border-dark mt-1 p-2">
-            <label for="Comentario">
-              <h5>Hora de entrega</h5>
-            </label>
-            <div class="border border-dark border-1 mt-1 p-3"><?php echo $row->Hora; ?></div>
           </div>
         </div>
       </div>

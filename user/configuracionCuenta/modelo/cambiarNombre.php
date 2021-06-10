@@ -1,11 +1,14 @@
 <?php
-$nombre = $_POST['nombre'];
 
 
 session_start();
 
+include("../../../comun/conexionBD.php");
 
-include("../conexionBD.php");
+
+
+$nombre  = preg_replace('/[^A-Za-z0-9\-]/', '', $_POST['nombre']);
+
 header('Access-Control-Allow-Origin: *');
 $email = $_SESSION['usuario']['email'];
 
@@ -22,7 +25,13 @@ if (mysqli_num_rows($check) > 0) {
     $sql = $mysqli->query("UPDATE usuario SET Nombre = '$nombre' WHERE Email = '$email'");
 
 
-    header("Location: ../../editarPerfil.php?ncorrecto");
+    header("Location: ../vista/editarPerfil.php?ncorrecto");
 } else {
     echo "Error no se ha podido cambiar el nombre";
 }
+
+// function cleane($string)
+// {
+//     $string = str_replace(' ', '-', $string); // Replaces spaces with hyphens.
+//     return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+// }

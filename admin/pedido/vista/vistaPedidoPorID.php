@@ -12,7 +12,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
   <!-- CSS Icons-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-  <title>Pitzeria girona</title>
+  <title>Pizzería Girona</title>
 </head>
 
 <body>
@@ -28,12 +28,12 @@
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark mb-sl-3">
       <a href="../../../paginaHome.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <img src="../../../uploads/logo-page.png" alt="" class="icoLogo">
-        <h1>Pitzeria Girona</h1>
+        <h1>Pizzería Girona</h1>
       </a>
 
       <ul class="nav nav-pills">
         <!--Username-->
-        <li class="nav-item "><a href="../../../user/configuracionCuenta/vista/ajustesCuenta.php" class="nav-link text-reset">
+        <li class="nav-item "><a href="../../../user/configuracionCuenta/vista/editarPerfil.php" class="nav-link text-reset">
             <?php
             echo ($_SESSION["usuario"]["email"]);
             ?>
@@ -50,15 +50,15 @@
         }
         ?>
         <?php
-                if ($_SESSION['usuario']['ID_Role'] == 1) {
-                    echo ('<li class="nav-item"><a href="pedidos.php" class="nav-link active">Pedidos</a></li>');
-                    echo ('<li class="nav-item"><a href="../../../admin/Usuarios/vista/listaUsuarios.php" class="nav-link">Lista de usuarios</a></li>');
-                } else if ($_SESSION['usuario']['ID_Role'] == 3) {
-                    echo ('<li class="nav-item"><a href="../../../admin/Usuarios/vista/listaUsuarios.php" class="nav-link">Lista de usuarios</a></li>');
-                }
-                ?>
+        if ($_SESSION['usuario']['ID_Role'] == 1) {
+          echo ('<li class="nav-item"><a href="pedidos.php" class="nav-link active">Pedidos</a></li>');
+          echo ('<li class="nav-item"><a href="../../../admin/Usuarios/vista/listaUsuarios.php" class="nav-link">Lista de usuarios</a></li>');
+        } else if ($_SESSION['usuario']['ID_Role'] == 3) {
+          echo ('<li class="nav-item"><a href="../../../admin/Usuarios/vista/listaUsuarios.php" class="nav-link">Lista de usuarios</a></li>');
+        }
+        ?>
         <!--<li class="nav-item"><a href="../../../about-us.php" class="nav-link">Quienes somos</a></li>-->
-        <li class="nav-item"><a id="cerrar" class="nav-link">Cerrar sesion</a></li>
+        <li class="nav-item"><a id="cerrar" class="nav-link">Cerrar sesión</a></li>
       </ul>
     </header>
   </div>
@@ -69,7 +69,7 @@
     $idPedido = $_GET['idPedido'];
     //echo $r->Email." direccion".$r->Direccion."fdffd " .$r->ID_Usuario;
 
-    $verPedido = $mysqli->query("SELECT p.ID_Pedido as ID_Pedido,p.Comentario,p.Activo,u.Nombre,p.PrecioTotal,p.Hora,e.Estado,u.Direccion ,u.Telefono FROM pedido p, usuario u, estado_pedido e WHERE p.ID_Pedido=$idPedido AND(p.ID_Usuario=u.ID_Usuario AND p.ID_Estado=e.ID_Estado)");
+    $verPedido = $mysqli->query("SELECT p.ID_Pedido as ID_Pedido,p.Comentario,p.Activo,u.Nombre,p.PrecioTotal,p.Hora,e.Estado,u.Direccion ,u.Telefono, u.Email FROM pedido p, usuario u, estado_pedido e WHERE p.ID_Pedido=$idPedido AND(p.ID_Usuario=u.ID_Usuario AND p.ID_Estado=e.ID_Estado)");
     echo ($mysqli->error);
     $row = $verPedido->fetch_object();
     //echo $row->ID_Pedido." --- ".$row->Comentario." --- ".$row->Activo." --- ".$row->Nombre." --- ".$row->PrecioTotal." --- ".$row->Estado." --- ".$row->Direccion." --- ".$row->Telefono;
@@ -110,7 +110,7 @@
               <th>Total a pagar</th>
               <td></td>
               <td></td>
-              <td><?php echo $row->PrecioTotal; ?>€</td>
+              <td><strong><?php echo $row->PrecioTotal; ?>€</strong></td>
             </tr>
           </tbody>
         </table>
@@ -136,51 +136,61 @@
         </label>
       </div>
       <div id="DatosPersonales" class="container border-start border-end border-dark border-2 mt-2 text-center p-2">
-        <div style="display:none;" id="direccion"><?php echo $row->Direccion; ?></div>
-        <ul id="direccionDescompuesta" style="list-style: none;">
-          <!--Tabla direccion-->
-          <table class="w-100">
-            <thead class="border border-dark ">
-              <th>Provincia</th>
-              <th>Municipio</th>
-              <th>Cp</th>
-              <th>Dirección</th>
-              <th>Número</th>
-              <th>Piso</th>
-              <th>Bloque</th>
-              <th>Puerta</th>
-              <th>Escalera</th>
-            </thead>
-            <tbody class="border-bottom border-dark">
-              <td>
-                <p id="provincia"></p>
-              </td>
-              <td>
-                <p id="municipio"></p>
-              </td>
-              <td>
-                <p id="cp"></p>
-              </td>
-              <td>
-                <p id="Direccion"></p>
-              </td>
-              <td>
-                <p id="Numero"></p>
-              </td>
-              <td>
-                <p id="Piso"></p>
-              </td>
-              <td>
-                <p id="Bloque"></p>
-              </td>
-              <td>
-                <p id="Puerta"></p>
-              </td>
-              <td>
-                <p id="Escalera"></p>
-              </td>
-            </tbody>
-          </table>
+        <div class="border border-dark "><b>Nombre:</b> <?php echo $row->Nombre; ?></div>
+        <div class="border border-dark mt-1"><b>Teléfono:</b> <?php echo $row->Telefono; ?></div>
+        <div class="border border-dark mt-1"><b>Email:</b> <?php echo $row->Email; ?></div>
+
+        <div class="border border-dark mt-1 p-2">
+          <!--Titulo-->
+          <div class="">
+            <h5>Dirección</h5>
+          </div>
+          <div style="display:none;" id="direccion"><?php echo $row->Direccion; ?></div>
+          <ul id="direccionDescompuesta" style="list-style: none;">
+            <!--Tabla direccion-->
+            <table class="w-100">
+              <thead class="border border-dark ">
+                <th>Provincia</th>
+                <th>Municipio</th>
+                <th>Cp</th>
+                <th>Dirección</th>
+                <th>Número</th>
+                <th>Piso</th>
+                <th>Bloque</th>
+                <th>Puerta</th>
+                <th>Escalera</th>
+              </thead>
+              <tbody class="border-bottom border-dark">
+                <td>
+                  <p id="provincia"></p>
+                </td>
+                <td>
+                  <p id="municipio"></p>
+                </td>
+                <td>
+                  <p id="cp"></p>
+                </td>
+                <td>
+                  <p id="Direccion"></p>
+                </td>
+                <td>
+                  <p id="Numero"></p>
+                </td>
+                <td>
+                  <p id="Piso"></p>
+                </td>
+                <td>
+                  <p id="Bloque"></p>
+                </td>
+                <td>
+                  <p id="Puerta"></p>
+                </td>
+                <td>
+                  <p id="Escalera"></p>
+                </td>
+              </tbody>
+            </table>
+        </div>
       </div>
 
       <!--Comentario-->

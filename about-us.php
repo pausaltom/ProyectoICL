@@ -12,7 +12,7 @@
   <link href="downloads/bootstrap-5.0.1-dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- CSS Icons-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-  <title>Pitzeria girona</title>
+  <title>Pizzería girona</title>
 </head>
 
 <body>
@@ -21,12 +21,12 @@
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark mb-sl-3">
       <a href="paginaHome.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <img src="uploads/logo-page.png" alt="" class="icoLogo">
-        <h1>Pitzeria Girona</h1>
+        <h1>Pizzería Girona</h1>
       </a>
 
       <ul class="nav nav-pills">
         <!--Username-->
-        <li class="nav-item "><a href="user/configuracionCuenta/vista/ajustesCuenta.php" class="nav-link text-reset">
+        <li class="nav-item "><a href="user/configuracionCuenta/vista/editarPerfil.php" class="nav-link text-reset">
             <?php
             session_start();
             if (!isset($_SESSION["usuario"])) {
@@ -74,7 +74,7 @@
         <?php
         if (!isset($_SESSION["usuario"])) {
         } else {
-          echo ('<li class="nav-item"><a id="cerrar" class="nav-link">Cerrar sesion</a></li>');
+          echo ('<li class="nav-item"><a id="cerrar" class="nav-link">Cerrar sesión</a></li>');
         }
         ?>
       </ul>
@@ -92,7 +92,7 @@
         <div class="container d-flex w-100">
           <div class="col-sm-6">
 
-            <div class="text-start mx-2">
+            <div class="text-start mx-2">              
               <p class="fs-5">Somos una pizzería con mucha experiencia, nuestros productos llevan una gran cantidad de condimentos
                 de la mejor calidad a un buen precio. Los clientes tienen una gran variedad de pizzas a elegir, si
                 alguien tiene alguna necesidad también será escuchada.</p>
@@ -100,9 +100,13 @@
                 y listo, solo falta esperar, preparar una buena película y disfrutar.</p>
               <p class="fs-4 fw-bolder">¡¡ Buon Appetito. !!</p>
             </div>
+            <div class="text-start mx-2">
+              <p class="fs-5">Horario: De Lunes a Domingo, 13-16h / 19-24h</p>
+              <p class="fs-5">Tel: 933 222 040</p>
+            </div>
           </div>
-          <div class="container mx-2 w-100 border p-0">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d808.7520014860046!2d2.8199317716150887!3d41.96774236011738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12bae7b0432f1b0d%3A0x42986cf1a64dfb08!2sLuciopizza!5e0!3m2!1ses!2ses!4v1620843692157!5m2!1ses!2ses" class="w-100 h-100" allowfullscreen="" loading="lazy"></iframe>
+          <div class="container mx-2 w-100 border p-0">                          
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3!2d2.131164815374801!3d41.38613410733215!2m3!1f217.86774250829734!2f79.92778012368633!3f0!3m2!1i1024!2i768!4f88.24654181293552!3m3!1m2!1s0x12a49863f3e66dcb%3A0xb506341a94cc50fc!2sCarrer%20de%20Galileu%2C%20326%2C%2008028%20Barcelona!5e0!3m2!1ses!2ses!4v1623066589084!5m2!1ses!2ses" class="w-100 h-100" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
           </div>
         </div>
 

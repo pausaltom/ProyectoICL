@@ -6,12 +6,13 @@ if (!isset($_SESSION["usuario"]) || ($_SESSION['usuario']['ID_Role'] == '2')) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-   $nombre = $_POST['nombreProducto'];
-   $precio = $_POST['precioProducto'];
-   $id = $_POST['idProducto1'];
-
-
    include("../../../comun/conexionBD.php");
+   
+   $nombre = mysqli_escape_string($mysqli, $_POST['nombreProducto']);
+   $precio = mysqli_escape_string($mysqli, $_POST['precioProducto']);
+   $id = mysqli_escape_string($mysqli, $_POST['idProducto1']);
+
+
 
 
    $result = $mysqli->query("SELECT * from producto WHERE ID_Producto = $id");

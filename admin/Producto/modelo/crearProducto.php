@@ -5,12 +5,13 @@
         }
 
         if($_SERVER['REQUEST_METHOD']=='POST'){
-        $nombreProducto=$_POST['nombreProducto'];
-        $precioProducto=$_POST['precioProducto'];
-        $imagen=$_POST['imagen'];
-        $categoriaProducto = $_POST['IDcategoria'];
-        
         include("../../../comun/conexionBD.php");
+        $nombreProducto= mysqli_escape_string($mysqli,$_POST['nombreProducto']);
+        $precioProducto= mysqli_escape_string($mysqli,$_POST['precioProducto']);
+        $imagen= mysqli_escape_string($mysqli,$_POST['imagen']);
+        $categoriaProducto = mysqli_escape_string($mysqli,$_POST['IDcategoria']);
+        
+        
 
         $sql = "INSERT INTO producto (Nombre, Precio, img, ID_Categoria) VALUES ('$nombreProducto',$precioProducto,'$imagen',$categoriaProducto)";
         $result=$mysqli->query($sql);  

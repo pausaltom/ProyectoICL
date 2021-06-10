@@ -9,6 +9,7 @@ function loadEvents() {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Si, Cierra sesión!",
+        cancelButtonText: "Cancelar",
       }).then((result) => {
         if (result.isConfirmed) {
           window.open("comun/logout.php", "_self");

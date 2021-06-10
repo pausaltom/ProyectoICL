@@ -1,12 +1,13 @@
 <?php
-$passActual = $_POST['passActual'];
-$passNueva = $_POST['passNueva'];
-$passNueva2 = $_POST['passNueva2'];
+include("../../../comun/conexionBD.php");
+
+$passActual = mysqli_real_escape_string($mysqli,$_POST['passActual']);
+$passNueva = mysqli_real_escape_string($mysqli,$_POST['passNueva']);
+$passNueva2 = mysqli_real_escape_string($mysqli,$_POST['passNueva2']);
 
 session_start();
 
 
-include("../conexionBD.php");
 header('Access-Control-Allow-Origin: *');
 $email = $_SESSION['usuario']['email'];
 
@@ -22,7 +23,7 @@ if (password_verify($passActual, $row->Password)) {
     if ($passNueva != $passNueva2) {
         echo "las pass no son iguales";
         echo "<p>no son iguales</p>";
-        header("Location: ../../editarPerfil.php?error=1");
+        header("Location: ../vista/editarPerfil.php?error=1");
     } else if ($passNueva == $passNueva2) {
 
 
@@ -31,8 +32,8 @@ if (password_verify($passActual, $row->Password)) {
         $sql = $mysqli->query("UPDATE usuario SET Password = '$passwordCrypt' WHERE Email = '$email'");
 
 
-        header("Location: ../../editarPerfil.php?pcorrecto");
+        header("Location: ../vista/editarPerfil.php?pcorrecto");
     }
 } else {
-    echo "Contraseña actual incorrecta";
+    header("Location: ../vista/editarPerfil.php?pincorrecto");
 }

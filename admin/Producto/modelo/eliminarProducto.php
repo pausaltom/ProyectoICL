@@ -5,7 +5,8 @@
         }
         include("../../../comun/conexionBD.php");
 
-        $id=$_GET['idProd'];
+        
+        $id=mysqli_real_escape_string($mysqli,$_GET['idProd']);
 
         
 

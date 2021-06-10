@@ -5,7 +5,7 @@
     }
     include("../../../comun/conexionBD.php");
 
-    $id=$_GET['idProducto'];
+    $id=mysqli_real_escape_string($mysqli,$_GET['idProducto']);
 
     $result = $mysqli->query("SELECT * from producto WHERE ID_Producto=$id");
     echo ($mysqli->error);

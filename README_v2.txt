@@ -1,9 +1,13 @@
 
--- Si quereis podemos cambiar el tipo de Hora en la BD, ya que con hora no se puede distinguir entre diferentes dias, Tendriamos de ponerlo en el DAteTime o algo así,
-el que tiene (Año mes día hora minuto segundos), pero si queres podemos dejarlo como está y con un poco de suerte no se enterarán
+Revisar -- Manual de explotación
+Revisar -- Guía rapida
+//Seguridad Frontend,comprobaciones,required -- Documentacion ICL
+//	-- Substituir los enlaces, no ponerlos como Link (Color azul aciano underline).
+// error direccion
+//--Revisar producto cantidad min 1 menos 50
+//-- sql injection
 
---BD estados cambiar nombres
-
+--Carrito vaciar vacio redireccion a listaproductos
 //Hecho
 Filtro por categoria
 admin = respuestas de errores

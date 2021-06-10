@@ -8,7 +8,7 @@ function loadEvents() {
     if (subtotal == 0) {
       //Alert pago imposible
       Swal.fire({
-        title: "Su carrito esta vació!",
+        title: "Su carrito esta vacío!",
         text: "Regrese a productos o ofertas y añada algo",
         icon: "warning",
         confirmButtonColor: "#3085d6",
@@ -17,12 +17,13 @@ function loadEvents() {
       //Alert pago para realizar
       Swal.fire({
         title: "Esta seguro de que quiere pagar ya?",
-        text: "Una vez confirmado tendras que esperar a que la tienda confirme el pedido!",
+        text: "Una vez confirmado tendrás que esperar a que la tienda confirme el pedido!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Si, quiero pagar ya!",
+        cancelButtonText: "Cancelar",
       }).then((result) => {
         if (result.isConfirmed) {
           comprobarTieneDireccion();
@@ -37,7 +38,7 @@ function loadEvents() {
     if (subtotal == 0) {
       //Alert pago imposible
       Swal.fire({
-        title: "Su carrito esta vació!",
+        title: "Su carrito esta vacío!",
         text: "Regrese a productos o ofertas y añada algo",
         icon: "warning",
         confirmButtonColor: "#3085d6",
@@ -45,16 +46,17 @@ function loadEvents() {
     } else {
       //Alert pago para realizar
       Swal.fire({
-        title: "Esta seguro de que quiere vaciar el carrito?",
+        title: "Esta seguro de que quieres vaciar el carrito?",
         text: "Una vez confirmado se vaciara!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Si, quiero vaciar el carrito!",
+        confirmButtonText: "Si, quiero el carrito!",
+        cancelButtonText: "Cancelar",
       }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire("Operación realizada!", "El carrito se vació.", "success");
+          Swal.fire("Operación realizada!", "La cesta se vació.", "success");
           window.open("../modelo/vaciarCarritoTodo.php", "_self");
         }
       });
@@ -64,12 +66,13 @@ function loadEvents() {
   document.getElementById("cerrar").addEventListener("click", () => {
     Swal.fire({
       title: "Estas seguro?",
-      text: "Una vez cerrada tendras que volver a iniciar sesión!",
+      text: "Una vez cerrada tendrás que volver a iniciar sesión!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Si, Cierra sesión!",
+      cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
         window.open("../../comun/logout.php", "_self");
@@ -142,12 +145,13 @@ function respPago() {
       //Alert pago para realizar
       Swal.fire({
         title: "Imposible de realizar el pago!",
-        text: "Usted ya tiene un pedido en espera, porfavor espera a que confirmen el pedido antes de realizar otro o bien puede revisar el ultimo pedido",
+        text: "Usted ya tiene un pedido en espera, por favor espera a que confirmen el pedido antes de realizar otro o bien puede revisar el ultimo pedido",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Quiero ver el pedido",
+        cancelButtonText: "Cancelar",
       }).then((result) => {
         if (result.isConfirmed) {
           window.location = "../vista/vistaPago.php";
@@ -157,7 +161,7 @@ function respPago() {
     } else {
       //alert("Fallo al realizar el pago"+respOK[0]);
       Swal.fire({
-        title: "Su carrito esta vació!",
+        title: "Su carrito esta vacío!",
         text: "Regrese a productos o ofertas y añada algo",
         icon: "warning",
         confirmButtonColor: "#3085d6",

@@ -12,10 +12,13 @@
   <link href="../../downloads/bootstrap-5.0.1-dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- CSS Icons-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-  <title>Pitzeria girona</title>
+  <title>Pizzería girona</title>
   <style>
     td {
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 150px;
     }
 
     input {
@@ -31,12 +34,12 @@
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark mb-sl-3">
       <a href="../../paginaHome.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <img src="../../uploads/logo-page.png" alt="" class="icoLogo">
-        <h1>Pitzeria Girona</h1>
+        <h1>Pizzería Girona</h1>
       </a>
 
       <ul class="nav nav-pills">
         <!--Username-->
-        <li class="nav-item "><a href="../../user/configuracionCuenta/vista/ajustesCuenta.php" class="nav-link text-reset">
+        <li class="nav-item "><a href="../../user/configuracionCuenta/vista/editarPerfil.php" class="nav-link text-reset">
             <?php
             session_start();
             if (!isset($_SESSION["usuario"])) {
@@ -93,7 +96,7 @@
         <?php
         if (!isset($_SESSION["usuario"])) {
         } else {
-          echo ('<li class="nav-item"><a id="cerrar" class="nav-link cursor: pointer">Cerrar sesion</a></li>');
+          echo ('<li class="nav-item"><a id="cerrar" class="nav-link cursor: pointer">Cerrar sesión</a></li>');
         }
         ?>
       </ul>
@@ -106,11 +109,11 @@
       <h1 class="h2 mt-2">Productos</h1>
     </div>
     <!-- Filtrado con selector, añadiremos id categoria en el GET, autofocus en Todo y id categoria 0 sera para poder controlar query desde php -->
-    <label for="selectorFiltrado">Filtrar por categoria de producto:</label>
+    <label for="selectorFiltrado">Filtrar por categoría de producto:</label>
     <select id="selectorFiltrado"></select>
 
     <!--Contenedor de productos-->
-    <table id="tablaProductos" style="width: 90%;" class="container w-100 text-center my-1">
+    <table id="tablaProductos" style="width: 90%;" class="container w-100 text-center my-1 ">
       <!--<thead class="container border border-dark rounded-4 color-White-6 my-3 w-80 h-25 p-2 mx-1 d-flex text-start">
         <th>Imagen:</th>
         <th>Nombre Producto:</th>

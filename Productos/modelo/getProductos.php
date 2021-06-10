@@ -2,7 +2,7 @@
 
 include("../../comun/conexionBD.php");
     
-$registrosPorPag=4;
+$registrosPorPag=3;
 
 $pagina=$_GET["pagina"];
 $categoria=$_GET["categoria"];

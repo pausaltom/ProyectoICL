@@ -12,7 +12,7 @@
   <link href="../../../downloads/bootstrap-5.0.1-dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- CSS Icons-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-  <title>Pitzeria Girona</title>
+  <title>Pizzería Girona</title>
 
   <style>
     td {
@@ -33,12 +33,12 @@
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark mb-sl-3">
       <a href="../../../paginaHome.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <img src="../../../uploads/logo-page.png" alt="" class="icoLogo">
-        <h1>Pitzeria Girona</h1>
+        <h1>Pizzería Girona</h1>
       </a>
 
       <ul class="nav nav-pills">
         <!--Username-->
-        <li class="nav-item "><a href="../../../user/configuracionCuenta/vista/ajustesCuenta.php" class="nav-link text-reset">
+        <li class="nav-item "><a href="../../../user/configuracionCuenta/vista/editarPerfil.php" class="nav-link text-reset">
             <?php
             echo ($_SESSION["usuario"]["email"]);
             ?>
@@ -76,7 +76,7 @@
           echo ('<li class="nav-item"><a href="../../../admin/Usuarios/vista/listaUsuarios.php" class="nav-link active">Lista de usuarios</a></li>');
         }
         ?>
-        <li class="nav-item"><a id="cerrar" class="nav-link">Cerrar sesion</a></li>
+        <li class="nav-item"><a id="cerrar" class="nav-link">Cerrar sesión</a></li>
       </ul>
     </header>
   </div>

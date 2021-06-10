@@ -5,9 +5,9 @@
         }
         include("../../../comun/conexionBD.php");
 
-        $id=$_POST['idProducto1'];
-        $nombreProducto=$_POST['nombreProducto'];
-        $precioProducto=$_POST['precioProducto'];
+        $id= mysqli_escape_string($mysqli,$_POST['idProducto1']);
+        $nombreProducto= mysqli_escape_string($mysqli,$_POST['nombreProducto']);
+        $precioProducto= mysqli_escape_string($mysqli,$_POST['precioProducto']);
 
         $productUpdated=$mysqli->query("UPDATE producto SET Nombre = '$nombreProducto' , Precio='$precioProducto' WHERE ID_Producto=$id");    
         echo ($mysqli->error);

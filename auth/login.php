@@ -1,13 +1,14 @@
   
 <?php
-$email = $_POST['email'];
-$password = $_POST['password'];
+require("../comun/conexionBD.php");
 
-// $email = mysqli_real_escape_string($mysqli, $_POST['email']);
+
+//$email = $_POST['email'];
+$password = mysqli_real_escape_string($mysqli,$_POST['password']);
+$email = mysqli_real_escape_string($mysqli, $_POST['email']);
 // $passwordS = mysqli_real_escape_string($mysqli, $_POST['password']);
 
 //$passwordS = htmlspecialchars($password, $flags = ENT_COMPAT | ENT_HTML401, $encoding = ini_get("default_charset"), $double_encode = true);
-require("../comun/conexionBD.php");
 
 
 $comprobacion = $mysqli->query("SELECT * from usuario WHERE usuario.Email='$email'");

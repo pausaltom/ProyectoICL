@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <!-- CSS Icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-    <title>Pitzeria girona</title>    
+    <title>Pizzería girona</title>    
 </head>
 
 <body>
@@ -26,12 +26,12 @@
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark mb-sl-3">
             <a href="../../paginaHome.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                 <img src="../../uploads/logo-page.png" alt="" class="icoLogo">
-                <h1>Pitzeria Girona</h1>
+                <h1>Pizzería Girona</h1>
             </a>
 
             <ul class="nav nav-pills">
                 <!--Username-->
-                <li class="nav-item "><a href="../../user/configuracionCuenta/vista/ajustesCuenta.php" class="nav-link text-reset">
+                <li class="nav-item "><a href="../../user/configuracionCuenta/vista/editarPerfil.php" class="nav-link text-reset">
                         <?php
                         echo ($_SESSION["usuario"]["email"]);
                         ?>
@@ -56,7 +56,7 @@
                     echo ('<li class="nav-item"><a href="../../../admin/Usuarios/vista/listaUsuarios.php" class="nav-link">Lista de usuarios</a></li>');
                 }
                 ?>
-                <li class="nav-item"><a id="cerrar" class="nav-link">Cerrar sesion</a></li>
+                <li class="nav-item"><a id="cerrar" class="nav-link">Cerrar sesión</a></li>
             </ul>
         </header>
     </div>
@@ -72,15 +72,15 @@
                     <!-- Selects prov muni cp-->
                     <label for="provincia">Provincia*: </label>
                     <select id="provincia" required>
-                        <option id="optProv">Selecione una provincia</option>
+                        <option id="optProv">Seleccione una provincia</option>
                     </select>
                     <label for="municipio">Municipio*: </label>
                     <select id="municipio" required>
-                        <option id="optMun" value="">Selecione un municipio</option>
+                        <option id="optMun" value="">Seleccione un municipio</option>
                     </select>
                     <label for="cp">Cp*: </label>
                     <select id="cp" required>
-                        <option id="optCp" value="">Selecione un código postal</option>
+                        <option id="optCp" value="">Seleccione un código postal</option>
                     </select>
                 </div>
                 <div class="container border my-4 h-50 p-4 text-center">
@@ -112,7 +112,7 @@
                     <div style="width: 300px; height: auto; text-align: left;">
                         <p id="errormsg"></p>
                     </div>
-                    <input type="button" value="Enviar" id="botonEnviar" class="btn btn-success w-25"></input>
+                    <input type="button" value="Guardar dirección" id="botonEnviar" class="btn btn-success w-25"></input>
                 </div>
             </div>
         </div> 

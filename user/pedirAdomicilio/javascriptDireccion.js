@@ -113,7 +113,7 @@ function comprobarCampos(){
     var selectorMun = document.getElementById("municipio"); 
     var selectorCp = document.getElementById("cp"); 
     var direccion = document.getElementById("Direccion"); 
-    var errorMsg = document.getElementById("errormsg");
+   // var errorMsg = document.getElementById("errormsg");
     var numero = document.getElementById("Numero");
     var piso = document.getElementById("Piso");
     var bloque = document.getElementById("Bloque");
@@ -125,22 +125,34 @@ function comprobarCampos(){
     selectorMun.options[selectorMun.selectedIndex].text==="Selecione un municipio"||
     selectorCp.options[selectorCp.selectedIndex].text==="Selecione un código postal"||
     direccion.value===""||numero.value==="") {
-        errorMsg.style="color:red";
-        errorMsg.innerHTML="Error algo ha ido mal, revise que ha introducido correctamente los datos en los campos, recuerde que los campos marcados con un * son obligatorios\nRealiza la búsqueda por alguna palabra de referencia y no utilices signos de puntuación, abreviaturas ni artículos.";
+        /*errorMsg.style="color:red";
+        errorMsg.innerHTML="Error algo ha ido mal, revise que ha introducido correctamente los datos en los campos, recuerde que los campos marcados con un * son obligatorios\nRealiza la búsqueda por alguna palabra de referencia y no utilices signos de puntuación, abreviaturas ni artículos.";*/
+        Swal.fire({
+            icon: 'error',
+            title: 'Dirección no valida',
+            text: 'recuerde que los campos marcados con un * son obligatorios y no utilices signos de puntuación, abreviaturas ni artículos.',
+            footer: 'Error algo ha ido mal, revise que ha introducido correctamente los datos en los campos.'
+          });
     }else{
        
-        errorMsg.style="color:green";
-        errorMsg.innerHTML="Dirección Válida";
-        var direccionCompuesta = selectorProv.options[selectorProv.selectedIndex].text+".."+selectorMun.options[selectorMun.selectedIndex].text+
-        ".."+selectorCp.options[selectorCp.selectedIndex].text+".."+direccion.value+".."+numero.value+".."+piso.value+".."+bloque.value+".."+puerta.value+".."+escalera.value;
+        // errorMsg.style="color:green";
+        // errorMsg.innerHTML="Dirección Válida";
 
+        Swal.fire({
+            icon: 'success',
+            title: 'Dirección valida',
+            text: 'La dirección cumple con los requisitos.',       
+        }).then(()=>{
+             var direccionCompuesta = selectorProv.options[selectorProv.selectedIndex].text+".."+selectorMun.options[selectorMun.selectedIndex].text+
+            ".."+selectorCp.options[selectorCp.selectedIndex].text+".."+direccion.value+".."+numero.value+".."+piso.value+".."+bloque.value+".."+puerta.value+".."+escalera.value;
         
-        console.log('dirección comp: '+direccionCompuesta);
+            //console.log('dirección comp: '+direccionCompuesta);
+            window.location="./insertDireccion.php?userDireccion=" + direccionCompuesta;
+               
+        })
         
-        window.location="./insertDireccion.php?userDireccion=" + direccionCompuesta;
-        
-     
 
+           
     }
 }
 
@@ -154,12 +166,13 @@ function loadEvents() {
     document.getElementById("cerrar").addEventListener("click",()=>{
         Swal.fire({
             title: 'Estas seguro?',
-            text: "Una vez cerrada tendras que volver a iniciar sesión!",
+            text: "Una vez cerrada tendrás que volver a iniciar sesión!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, Cierra sesión!'
+            confirmButtonText: 'Si, Cierra sesión!',
+            cancelButtonText: "Cancelar",
           }).then((result) => {
             if (result.isConfirmed) {
               window.open("../../comun/logout.php","_self");

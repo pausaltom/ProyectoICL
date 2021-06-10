@@ -61,9 +61,9 @@ function procesarUsuarios() {
                 let td2s = document.createElement("td");
                 td2s.innerHTML = arrayCadaUsuario[1];
                 let td3s = document.createElement("td");
-                td3s.innerHTML = arrayCadaUsuario[2];
+                td3s.innerHTML = arrayCadaUsuario[3];
                 let td4s = document.createElement("td");
-                td4s.innerHTML = arrayCadaUsuario[3];
+                td4s.innerHTML = arrayCadaUsuario[2];
                 let td5s = document.createElement("td");
                 td5s.innerHTML = arrayCadaUsuario[4];
                 let td6s = document.createElement("td");
@@ -178,12 +178,13 @@ function loadEvents() {
     document.getElementById("cerrar").addEventListener("click",()=>{
         Swal.fire({
             title: 'Estas seguro?',
-            text: "Una vez cerrada tendras que volver a iniciar sesión!",
+            text: "Una vez cerrada tendrás que volver a iniciar sesión!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, Cierra sesión!'
+            confirmButtonText: 'Si, Cierra sesión!',
+            cancelButtonText: "Cancelar",
           }).then((result) => {
             if (result.isConfirmed) {
               window.open("../../../comun/logout.php","_self");

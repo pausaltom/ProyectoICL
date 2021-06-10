@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 
 
-    <title>Pitzeria Girona</title>
+    <title>Pizzería Girona</title>
 
 </head>
 
@@ -32,12 +32,12 @@
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark mb-sl-3">
             <a href="paginaHome.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                 <img src="uploads/logo-page.png" alt="" class="icoLogo">
-                <h1>Pitzeria Girona</h1>
+                <h1>Pizzería Girona</h1>
             </a>
 
             <ul class="nav nav-pills">
                 <!--Username-->
-                <li class="nav-item "><a href="user/configuracionCuenta/vista/ajustesCuenta.php" class="nav-link text-reset">
+                <li class="nav-item "><a href="user/configuracionCuenta/vista/editarPerfil.php" class="nav-link text-reset">
                         <?php
                         if (!isset($_SESSION["usuario"])) {
                         } else {
@@ -72,7 +72,7 @@
                 <?php
                 if (!isset($_SESSION["usuario"])) {
                 } else {
-                    echo ('<li class="nav-item"><a id="cerrar" class="nav-link">Cerrar sesion</a></li>');
+                    echo ('<li class="nav-item"><a id="cerrar" class="nav-link">Cerrar sesión</a></li>');
                 }
                 ?>
             </ul>
@@ -89,13 +89,13 @@
             <div class="container border-bottom border-dark">
                 <h2>Ofertas</h2>
             </div>
-            <div id="carouselExampleSlidesOnly" class="carousel slide mx-0 mt-5" data-ride="carousel">
+            <div id="carouselExampleSlidesOnly" class="carousel slide mx-0 mt-2" data-ride="carousel">
                 <div class="carousel-inner h-100">
                     <!--Contenido 1-->
                     <div class="carousel-item active p-1">
                         <!-- media/images/ofertas/Delicheese.jpg -->
                         <a href="Productos/vista/listaProductos.php">
-                            <img id="imagenC" class="d-block w-100" alt="1 image">
+                            <img id="imagenC" class="d-block w-100 h-100" alt="1 image">
                         </a>
                         <script type="text/javascript">
                             window.addEventListener("load", changeImg2);

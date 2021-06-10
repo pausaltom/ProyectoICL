@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="30">
+    <meta http-equiv="refresh" content="10">
     <link rel="stylesheet" href="../../../css/allPages.css">
     <link rel="stylesheet" href="../../../css/crear-producto.css">
     <link rel="icon" type="image/png" href="../../../uploads/logo-page.png">
@@ -14,7 +14,7 @@
     <link href="../../../downloads/bootstrap-5.0.1-dist/css/bootstrap.min.css" rel="stylesheet">    
     <!-- CSS Icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-    <title>Pitzeria girona</title>
+    <title>Pizzería Girona</title>
 </head>
 
 <body>
@@ -23,12 +23,12 @@
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark mb-sl-3">
             <a href="../../../paginaHome.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                 <img src="../../../uploads/logo-page.png" alt="" class="icoLogo">
-                <h1>Pitzeria Girona</h1>
+                <h1>Pizzería Girona</h1>
             </a>
 
             <ul class="nav nav-pills">
                 <!--Username-->
-                <li class="nav-item "><a href="../../../user/configuracionCuenta/vista/ajustesCuenta.php" class="nav-link text-reset">
+                <li class="nav-item "><a href="../../../user/configuracionCuenta/vista/editarPerfil.php" class="nav-link text-reset">
                         <?php
                         session_start();
                         echo ($_SESSION["usuario"]["email"]);
@@ -52,7 +52,7 @@
                 }
                 ?>
                 <!--<li class="nav-item"><a href="../../../about-us.php" class="nav-link">Quienes somos</a></li>-->
-                <li class="nav-item"><a id="cerrar" class="nav-link">Cerrar sesion</a></li>
+                <li class="nav-item"><a id="cerrar" class="nav-link">Cerrar sesión</a></li>
             </ul>
         </header>
     </div>
@@ -74,8 +74,8 @@
                         <!--<th class="text-center">Id pedido</th>-->
                         <th class="text-center">Cod pedido</th>
                         <th class="text-center">Nombre cliente</th>
-                        <th class="text-center">Telefono</th>
-                        <th class="text-center">Direccion</th>
+                        <th class="text-center">Teléfono</th>
+                        <th class="text-center">Dirección</th>
                         <th class="text-center">Comentario</th>
                         <th class="text-center">Precio total</th>
                         <th class="text-center">Hora</th>

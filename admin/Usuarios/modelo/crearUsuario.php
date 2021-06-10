@@ -4,12 +4,14 @@ if (!isset($_SESSION["usuario"]) || ($_SESSION['usuario']['ID_Role'] != '3')) {
     header("location: http://localhost/php/comun/logout.php");
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nombre = $_POST['nombre'];
-    $email = $_POST['email'];
-    $telefono = $_POST['telefono'];
-    $password = $_POST['contrasena'];
-    $idRole = $_POST['idRole'];
     include("../../../comun/conexionBD.php");
+
+    $nombre = mysqli_escape_string($mysqli,$_POST['nombre']);
+    $email = mysqli_escape_string($mysqli,$_POST['email']);
+    $telefono = mysqli_escape_string($mysqli,$_POST['telefono']);
+    $password = mysqli_escape_string($mysqli,$_POST['contrasena']);
+    $idRole = mysqli_escape_string($mysqli,$_POST['idRole']);
+    
     $comprobacion = $mysqli->query("SELECT * from usuario WHERE usuario.Email='$email'");
     echo ($mysqli->error);
     if(!empty($comprobacion) && mysqli_num_rows($comprobacion)>0) {

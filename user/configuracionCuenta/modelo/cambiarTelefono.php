@@ -1,11 +1,11 @@
 <?php
-$telefono = $_POST['telefono'];
+include("../../../comun/conexionBD.php");
 
+$telefono = mysqli_real_escape_string($mysqli,$_POST['telefono']);
 
 session_start();
 
 
-include("../conexionBD.php");
 header('Access-Control-Allow-Origin: *');
 $email = $_SESSION['usuario']['email'];
 
@@ -21,7 +21,7 @@ if (mysqli_num_rows($check) > 0) {
     $sql = $mysqli->query("UPDATE usuario SET Telefono = '$telefono' WHERE Email = '$email'");
 
 
-    header("Location: ../../editarPerfil.php?tcorrecto");
+    header("Location: ../vista/editarPerfil.php?tcorrecto");
 } else {
-    echo "Error no se h apodido cambiar el teléfono";
+    echo "Error no se ha podido cambiar el teléfono";
 }

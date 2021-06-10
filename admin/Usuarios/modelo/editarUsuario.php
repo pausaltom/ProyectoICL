@@ -5,17 +5,17 @@
         }
         include("../../../comun/conexionBD.php");
 
-        $id=$_POST['idUsuario'];
-        $nombre=$_POST['nombre'];
-        $telefono=$_POST['telefono'];
-        $idRole=$_POST['idRole'];
+        $id= mysqli_escape_string($mysqli,$_POST['idUsuario']);
+        $nombre=mysqli_escape_string($mysqli,$_POST['nombre']);
+        $telefono=mysqli_escape_string($mysqli,$_POST['telefono']);
+        $idRole=mysqli_escape_string($mysqli,$_POST['idRole']);
 
         $productUpdated=$mysqli->query("UPDATE usuario SET Nombre = '$nombre' , Telefono='$telefono', ID_Role=$idRole WHERE ID_Usuario=$id");    
         echo ($mysqli->error);
         if(!$mysqli->error){
             header("location: ../vista/listaUsuarios.php");
         }else{
-            header("location: ../vista/editarUsuario.php?error=Ocurrio un error al editar");
+            header("location: ../vista/editarUsuario.php?error=Ocurrió un error al editar");
         }
         
         $mysqli->close();

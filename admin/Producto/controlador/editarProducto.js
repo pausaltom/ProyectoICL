@@ -151,7 +151,8 @@ function loadEvents() {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, eliminalo!',
+            confirmButtonText: 'Si, elimínelo!',
+            cancelButtonText: "Cancelar",
             closeOnConfirm: false
         }).then((result) => {
             if (result.isConfirmed) {
@@ -167,12 +168,13 @@ function loadEvents() {
     document.getElementById("cerrar").addEventListener("click", () => {
         Swal.fire({
             title: 'Estas seguro?',
-            text: "Una vez cerrada tendras que volver a iniciar sesión!",
+            text: "Una vez cerrada tendrás que volver a iniciar sesión!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, Cierra sesión!'
+            confirmButtonText: 'Si, Cierra sesión!',
+            cancelButtonText: "Cancelar",
         }).then((result) => {
             if (result.isConfirmed) {
                 window.open("../../../comun/logout.php", "_self");

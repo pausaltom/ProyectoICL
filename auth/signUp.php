@@ -12,7 +12,7 @@
     <link href="../downloads/bootstrap-5.0.1-dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- CSS Icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-    <title>Pitzeria girona</title>
+    <title>Pizzería girona</title>
     <style>
         input:invalid+span:after {
             position: absolute;
@@ -41,6 +41,7 @@
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark mb-sl-3">
             <a href="../paginaHome.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                 <img src="../uploads/logo-page.png" alt="" class="icoLogo">
+                <h1>Pizzería Girona</h1>
             </a>
 
             <!--Username-->
@@ -49,9 +50,9 @@
                 <!--<li class="nav-item"><a href="ofertas.php" class="nav-link ">Ofertas</a></li>-->
                 <!--<li class="nav-item"><a href="menus.html" class="nav-link">Menus</a></li>-->
                 <!--<li class="nav-item"><a href="reservar.html" class="nav-link active">Reservar</a></li>-->
-                <li class="nav-item"><a href="productos.php" class="nav-link">Productos</a></li>
-                <li class="nav-item"><a href="pedidos-domicilio.php" class="nav-link ">Pedir a domicilio</a></li>
-                <li class="nav-item"><a href="about-us.php" class="nav-link">Quienes somos</a></li>
+                <li class="nav-item"><a href="../Productos/vista/listaProductos.php" class="nav-link">Productos</a></li>
+                <!--<li class="nav-item"><a href="pedidos-domicilio.php" class="nav-link ">Pedir a domicilio</a></li>-->
+                <li class="nav-item"><a href="../about-us.php" class="nav-link">Quienes somos</a></li>
             </ul>
         </header>
     </div>
@@ -59,13 +60,13 @@
         <h1>Registrarse</h1>
         <?php
         if (isset($_POST["enviar"])) {
-
-            $email = $_POST['email'];
-            $nombre = $_POST["nombre"];
-            $telefono = $_POST["telefono"];
-            $password = $_POST["password"];
-
             include("../comun/conexionBD.php");
+
+            $email = mysqli_real_escape_string($mysqli,$_POST['email']);
+            $nombre = mysqli_real_escape_string($mysqli,$_POST["nombre"]);
+            $telefono = mysqli_real_escape_string($mysqli,$_POST["telefono"]);
+            $password = mysqli_real_escape_string($mysqli,$_POST["password"]);
+
             $comprobacion = $mysqli->query("SELECT * from usuario WHERE usuario.Email='$email'");
             if (mysqli_num_rows($comprobacion) <= 0) {
                 if ($_POST['password'] == $_POST['ConfirmarPassword']) {
@@ -109,8 +110,8 @@
             <span class="validity"></span>
             <span class="validity"></span>
             <br /><br /><br />
-            <input type="checkbox" id="politicas" style="margin-right: 1em;" name="politicas" required></input> He leido y
-            acepto la <a href="../politicasdeprivacidad.html">Políticas de Privacidad</a>
+            <input type="checkbox" id="politicas" style="margin-right: 1em;" name="politicas" required></input> He leído y
+            acepto las <a href="../politicasdeprivacidad.html">Políticas de Privacidad</a>
             <br />
             <span id="erroresForm" style="color: red;"></span>
             <br />

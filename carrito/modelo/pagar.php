@@ -6,7 +6,7 @@
     include("../../comun/conexionBD.php");     
     
     if($_SERVER['REQUEST_METHOD']=='POST'){
-        $comentario=$_POST['comentario'];
+        $comentario= mysqli_real_escape_string($mysqli,$_POST['comentario']);
         $subtotal=$_POST['subtotal'];
         $email=$_SESSION['usuario']['email'];
         $resultado = $mysqli->query("SELECT * from usuario where Email='$email'");
@@ -44,7 +44,7 @@
                 echo("Fallo al realizar el pago/0");
             }
         }else{
-            echo("Usted ya tiene un pedido Activo, porfavor termine el pedido antes de inicializar otro/2");
+            echo("Usted ya tiene un pedido Activo, por favor termine el pedido antes de iniciar otro/2");
             
         }
         

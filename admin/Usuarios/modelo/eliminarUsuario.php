@@ -5,7 +5,7 @@
         }
         include("../../../comun/conexionBD.php");
        
-        $id=$_GET['idUser'];
+        $id= mysqli_escape_string($mysqli,$_GET['idUser']);
         $userEmail=$_SESSION['usuario'];
        
         $usuarioUpdated=$mysqli->query("DELETE FROM usuario WHERE ID_Usuario=$id");    

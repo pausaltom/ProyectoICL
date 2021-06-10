@@ -14,7 +14,7 @@
   <!-- CSS Icons-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
   <script type="text/javascript" src="../controlador/carrito.js"></script>
-  <title>Carrito de la compra</title>
+  <title>Pizzería Girona</title>
   <style>
     table {
       width: 80%;
@@ -53,11 +53,11 @@
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark mb-sl-3">
       <a href="../../paginaHome.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <img src="../../uploads/logo-page.png" alt="" class="icoLogo">
-        <h1>Pitzeria Girona</h1>
+        <h1>Pizzería Girona</h1>
       </a>
       <ul class="nav nav-pills">
         <!--Username-->
-        <li class="nav-item "><a href="../../user/configuracionCuenta/vista/ajustesCuenta.php" class="nav-link text-reset">
+        <li class="nav-item "><a href="../../user/configuracionCuenta/vista/editarPerfil.php" class="nav-link text-reset">
             <?php
             if (!isset($_SESSION["usuario"])) {
             } else {
@@ -82,7 +82,7 @@
           }
           if (!isset($_SESSION["usuario"])) {
           } else {
-            echo ('<li class="nav-item"><a id="cerrar" class="nav-link">Cerrar sesion</a></li>');
+            echo ('<li class="nav-item"><a id="cerrar" class="nav-link">Cerrar sesión</a></li>');
           }
           ?>
       </ul>

@@ -27,7 +27,7 @@ function procesarProductos() {
       var img = document.createElement("img");
       img.src = rutaImagen(arrayCadaProducto[1]);
       img.width = 200;
-      img.height = 110;
+      img.height = 150;
       img.alt = "Imagen Producto";
       //Pon el estilo
       td1.classList =
@@ -86,7 +86,7 @@ function procesarProductos() {
       }
       //Pon el estilo
       tr.classList =
-        "container border border-dark rounded-4 color-White-6 my-1 w-80 h-25 p-2 mx-1 d-flex text-start";
+        "container border border-dark rounded-4 color-White-6 my-1 w-80 h-25 p-2 mx-1 d-flex text-center";
       tbody.appendChild(tr);
       tr.appendChild(td1);
       tr.appendChild(td2);
@@ -205,7 +205,7 @@ function loadEvents() {
   if (errorPedido === "0") {
     Swal.fire({
       icon: 'info',
-      title: 'Vaya',
+      title: 'Ups...',
       text: 'Su Pedido ha sido descartado o finalizado',
     })
   } else {
@@ -258,12 +258,13 @@ function loadEvents() {
     document.getElementById("cerrar").addEventListener("click", () => {
       Swal.fire({
         title: "Estas seguro?",
-        text: "Una vez cerrada tendras que volver a iniciar sesión!",
+        text: "Una vez cerrada tendrás que volver a iniciar sesión!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Si, Cierra sesión!",
+        cancelButtonText: "Cancelar",
       }).then((result) => {
         if (result.isConfirmed) {
           window.open("../../comun/logout.php", "_self");
@@ -271,7 +272,7 @@ function loadEvents() {
       });
     });
   } catch (error) {
-    console.log("Solo dara error debido a que no se inició sesion");
+    console.log("Solo dará error debido a que no se inició sesión");
     console.log(error);
   }
 }
@@ -294,24 +295,36 @@ function loadProductos() {
   xmlhttp.send();
 }
 function añadirProductoCarrito(id, cantidad) {
-  var formData = new FormData();
-  formData.append("idProducto", id);
-  console.log(id);
-  formData.append("cantidad", cantidad);
-  console.log(cantidad);
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = respCarrito;
-  xmlhttp.open("POST", "http://localhost/php/carrito/modelo/carrito.php", true);
-  xmlhttp.send(formData);
 
-  //Alert proccess
-  Swal.fire({
-    position: "top-end",
-    icon: "success",
-    title: "Producto añadido",
-    showConfirmButton: false,
-    timer: 1500,
+  //Comprueba la cantidad
+  if (cantidad <= 0 || cantidad > 50) {
+    Swal.fire({
+      icon: 'info',
+      title: 'La cantidad no es valida',
+      text: 'La cantidad del producto no es valida',
+      footer: 'Al eligir un producto solo puede ser 1 o 50 como máximo',
   });
+  }else{
+    var formData = new FormData();
+    formData.append("idProducto", id);
+    console.log(id);
+    formData.append("cantidad", cantidad);
+    console.log(cantidad);
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = respCarrito;
+    xmlhttp.open("POST", "http://localhost/php/carrito/modelo/carrito.php", true);
+    xmlhttp.send(formData);
+  
+    //Alert proccess
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Producto añadido",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+
 }
 
 function loadCategorias() {
